@@ -8,17 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var product: Product
+    
     var body: some View {
-        VStack {
-            ProductRowView()
-            ProductRowView()
-            ProductRowView()
+//        VStack {
+//            ProductRowView()
+//            ProductRowView()
+//            ProductRowView()
+//        }
+        ForEach(Product.productList) { list in
+            ProductRowView(product: list)
+            
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(product: Product.productList[0])
     }
 }

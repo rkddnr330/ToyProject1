@@ -11,7 +11,7 @@ import SwiftUI
 struct MovieCharacterApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView(product: Product.productList[0])
         }
     }
 }

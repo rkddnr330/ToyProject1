@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProductRowView: View {
+    var product: Product
+    
     
     var body: some View {
         HStack {
@@ -27,7 +29,7 @@ struct ProductRowView: View {
 
 private extension ProductRowView {
     var productImage: some View {
-        Image("Sosuke")
+        Image(product.ImageName)
             .resizable()
         /// .aspectRatio(contentMode: .fit)이랑 동등함
             .scaledToFit()
@@ -40,16 +42,16 @@ private extension ProductRowView {
     //        HStack{
             VStack(alignment: .leading){
                 HStack{
-                    Text("소스케")
+                    Text(product.name)
                         .font(.headline)
                         .fontWeight(.medium)
                     Spacer()
-                    Text("벼랑 위의 포뇨")
+                    Text(product.movie)
                     ///.footnote : caption보다 살~짝 더 큼
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
-                Text("5살 남자 아이. 본작품의 주인공. 벼랑 위에 있는 2~3층 정도 되는 주택에서 엄마와 함께 살고 있다.")
+                Text(product.description)
                     .padding(.vertical)
                     .font(.body)
                 ///foregroundColor가 .secondary다. 아주 직관적인 색 이름
@@ -64,12 +66,12 @@ private extension ProductRowView {
     var footerView: some View {
         HStack{
             ///굉장히 재밌는 TEXT표시. 각각 다른 font & +로 합쳐줌
-            Text("$ ").font(.footnote) + Text("300").font(.headline)
+            Text("$ ").font(.footnote) + Text("\(product.price)").font(.headline)
             Spacer()
             Image(systemName: "heart")
-                .foregroundColor(.red)
+                .foregroundColor(.lightRed)
             Image(systemName: "cart")
-                .foregroundColor(.red)
+                .foregroundColor(.lightRed)
         }
     }
 }
@@ -78,6 +80,6 @@ private extension ProductRowView {
 
 struct ProductRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductRowView()
+        ProductRowView(product: Product.productList[1])
     }
 }
