@@ -8,23 +8,20 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var product: Product
+    let movie: Movie
     
     var body: some View {
-//        VStack {
-//            ProductRowView()
-//            ProductRowView()
-//            ProductRowView()
-//        }
-        ForEach(Product.productList) { list in
-            ProductRowView(product: list)
-            
+        List(movie.products) { each in
+            NavigationLink(destination: Text("\(each.name)")) {
+                ProductRowView(product: each)
+            }
         }
+        .navigationTitle("지브리 영화")
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(product: Product.productList[0])
+        HomeView(movie: Movie())
     }
 }

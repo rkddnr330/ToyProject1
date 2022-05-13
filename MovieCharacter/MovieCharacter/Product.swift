@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Product: Identifiable {
+///JSONDecoder의 decode메서드는 변환 타입이 반드시 Decodable프로토콜을 준수해야 함
+///때문에 Product에 Decodable프로토콜을 채택
+struct Product: Identifiable, Decodable {
     let id: UUID = UUID()
     var name: String
     let ImageName: String
