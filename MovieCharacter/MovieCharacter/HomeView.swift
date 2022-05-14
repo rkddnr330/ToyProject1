@@ -12,7 +12,7 @@ struct HomeView: View {
     
     var body: some View {
         List(movie.products) { each in
-            NavigationLink(destination: Text("\(each.name)")) {
+            NavigationLink(destination: ProductDetailView(product: each)) {
                 ProductRowView(product: each)
             }
         }
